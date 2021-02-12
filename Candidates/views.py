@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 import matplotlib
+
 matplotlib.use('Agg')
 
 
@@ -17,30 +18,25 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/Vote/home/')
+                return HttpResponseRedirect('index')
             else:
                 return HttpResponseRedirect("Account disabled")
         else:
             print("Invalid credentials: {0}, {1}".format(username, password))
             return HttpResponseRedirect("Invalid login credentials")
     else:
-        return render(request, 'Vote/login.html', {})
+        return render(request, 'login.html', {})
 
 
-@login_required(redirect_field_name='/Vote/login/')
+@login_required(redirect_field_name='login')
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/Vote/home/')
 
 
-class HomeView(TemplateView):
-    template_name = 'Vote/home.html'
+class IndexView(TemplateView):
+    template_name = 'templates/index.html'
     context = {}
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context= Post.objects.all().filter(slider_post=True)
-        return context
 
 
 def vote(request):
@@ -74,5 +70,4 @@ def vote(request):
             print("No Post")
 
     return render(request, 'Vote/vote.html', context)
-
 
