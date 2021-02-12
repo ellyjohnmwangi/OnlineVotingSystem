@@ -16,6 +16,8 @@ class User(models.Model):
     regno = models.CharField(max_length=20)
     email = models.EmailField
     password = models.CharField(max_length=20)
+    fingerprint1 = models.CharField(max_length=10000)
+    fingerprint2 = models.CharField(max_length=10000)
 
 
 class UserProfile(models.Model):
