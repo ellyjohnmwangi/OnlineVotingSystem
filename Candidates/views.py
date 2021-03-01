@@ -1,3 +1,4 @@
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, get_object_or_404
 from .models import UserProfile, Position, Candidate
 from django.http import HttpResponseRedirect
@@ -35,7 +36,12 @@ def user_logout(request):
 
 
 class IndexView(TemplateView):
-    template_name = 'templates/index.html'
+    template_name = 'candidates/index.html'
+    context = {}
+
+
+class UserLoginView(LoginView):
+    template_name = 'candidates/login.html'
     context = {}
 
 
@@ -70,4 +76,3 @@ def vote(request):
             print("No Post")
 
     return render(request, 'Vote/vote.html', context)
-
