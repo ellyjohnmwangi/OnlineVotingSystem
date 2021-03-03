@@ -41,7 +41,7 @@ class IndexView(TemplateView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'candidates/login.html'
+    template_name = 'login.html'
     context = {}
 
 
