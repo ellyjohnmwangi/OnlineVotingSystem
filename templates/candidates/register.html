@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+       <!--================Blog Area =================-->
+        <section class="blog_area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 style="text-align:center;color: red">Register</h2>
+                        <div class="blog_left_sidebar">
+                            <form method="post">
+
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                <div id="errors">
+                                    <div class="inner">
+                                        <p style="color:red">Please correct the errors below</p>
+                                        <ul>
+                                            {% for field in form %}
+                                            {% if field.errors %}
+                                            <li>{{ form.label }} : {{ field.errors|striptags }}</li>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+
+                                <div class="mt-10">
+                                    <label for="uname" style="display: block; color: orange">Username:    </label>
+										<input type="text" id="uname" name="username" placeholder="User Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'User Name'" required="" class="single-input">
+									</div>
+                                <div class="mt-10">
+                                    <label for="emailfield"style="display: block; color: orange">Email:  </label>
+										<input type="text" id="emailfield" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required="" class="single-input">
+									</div>
+                                <div class="mt-10">
+                                    <label for="passwordfield" style="display: block; color: orange">Password:    </label>
+										<input type="password" id="passwordfield" name="password1" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required="" class="single-input">
+									</div>
+                                <div class="mt-10">
+                                    <label for="paasword2field" style="display: block; color: orange">Confirm password:   </label>
+										<input type="password" id="paasword2field" name="password2" placeholder="Again Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Again Password'" required="" class="single-input">
+									</div>
+                                <input type="submit" class="genric-btn success circle" style="float:left;margin-top:30px; background-color: darkorange;" value="Register">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+
+       {% endblock %}
