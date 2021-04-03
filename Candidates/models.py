@@ -3,8 +3,8 @@ from django.db import models
 
 # Create your models here.
 class Position(models.Model):
+    objects = None
     position = models.CharField(max_length=50)
-    no_of_candidates = models.IntegerField(default=0)
     about = models.TextField(default='')
 
     def __str__(self):
@@ -29,10 +29,10 @@ class UserProfile(models.Model):
 
 
 class Candidate(models.Model):
-    candidate = models.ForeignKey(Position, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     Description = models.TextField()
     image = models.ImageField(upload_to='Vote/static/Vote', blank=True)
+    position = models.OneToOneField(Position, on_delete=models.CASCADE, related_name='pos', default=1, blank=False)
     votes = models.IntegerField(default=0)
 
     def __str__(self):
