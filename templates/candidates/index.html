@@ -9,11 +9,9 @@
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="{% url 'login' %}"><h3>SIGN IN</h3></a>
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="{% url 'register' %}"><h3>Register Now</h3></a>
             {% else %}
-                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="{% url 'vote' %}"><h3>Vote Now</h3></a>
+                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="{%url 'vote' %}"><h3>Vote Now</h3></a>
                     <!-- add url to login page -->
             {% endif%}
                 </div>
-            </div>
-        </div>
     </header>
 {% endblock %}
