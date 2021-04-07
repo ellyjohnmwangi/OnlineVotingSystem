@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<p><h2>vote here on this page {{ Candidate.image}}</h2>
-</p>
 
+{% for post in posts %}
+<div id="voting" style="background-image: url('https://unsplash.com/photos/VEggVUrbsrQ');">
+<div class="container">
+
+<img src="{{ post.image.url }}" style="width: 400px; height: 300px; float: left; margin-right:15px; border: 1px solid;  padding: 5px; " alt="">
+    <p><a href="{% url 'voting'%}" style="font-size: 20px; padding-left: 200px;">{{post.position}} &nbsp; :</a>  <h3>{{ post.name }}</h3><br>
+    <div class="jumbotron"><h3>{{post.Description}}</h3></div></p>
+</div>
+{% endfor %}
 
 {% endblock %}

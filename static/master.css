@@ -1,0 +1,29 @@
+header.masthead{
+    padding-top: 10rem;
+    padding-bottom: calc(25rem - 5.5rem);
+    color: red;
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8)100%), url("bg-masthead.jpg");
+    background-size: cover;
+    margin-top: 30px;
+}
+#mainNav{
+    margin-top: 50px;
+}
+a.btn-xl {
+    padding: 1.25rem 3.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5rem;
+    background-color: orangered;
+}
+#about {
+  background-color: aquamarine;
+  }
+a{
+    color: orangered;
+}
+#voting{
+    background-image: url("voting_back.jpg");
+}

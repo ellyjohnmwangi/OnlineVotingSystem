@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-</body>
-</html>
+
+{% for candidate in candidates %}
+<p><div class="jumbotron"> <h2 style="color: blue; text-align: center"><strong>{{candidate.position}}</strong></h2></div></p>
+
+<form action="" method="post">
+<div class="container">
+<form>
+  <fieldset id="group1">
+    <label>
+      <input type="radio" value="value1" name="group1">
+    </label><h2 style="color: orangered;">{{ candidate.name }}</h2><br>
+  </fieldset>
+</div>
+{% endfor %}
+<input type="submit" style=" padding: 1.25rem 3.25rem; position: center;
+align-items: center;width:200px;;height:60px; font-size: 3rem;font-weight: 700;text-transform: uppercase;
+border: none;border-radius: 5rem;background-color: orangered;"
+       value="Vote" class="btn btn-success btn-lg  mt-4" />
+
+{% endblock %}
+
+style="width:60px;height:30px

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+j
+{% for vote in votes %}
+<ol>
+    <li>{{candidate.name}}:&nbsp; {{candidate.votes}}</li>
+</ol>
+
+{% endfor %}
+
+{% endblock %}
+
