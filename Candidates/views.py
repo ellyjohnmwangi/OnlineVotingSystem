@@ -1,3 +1,6 @@
+from urllib import request
+
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, get_object_or_404
 from .models import UserProfile, Position, Candidate
 from django.http import HttpResponseRedirect
@@ -9,34 +12,35 @@ import matplotlib
 matplotlib.use('Agg')
 
 
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('index')
-            else:
-                return HttpResponseRedirect("Account disabled")
-        else:
-            print("Invalid credentials: {0}, {1}".format(username, password))
-            return HttpResponseRedirect("Invalid login credentials")
-    else:
-        return render(request, 'login.html', {})
-
-
-@login_required(redirect_field_name='login')
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect('/Vote/home/')
-
-
 class IndexView(TemplateView):
-    template_name = 'templates/index.html'
-    context = {}
+    template_name = "templates/index.html",
+
+
+# class  UserLoginView(LoginView):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#
+#         user = authenticate(username=username, password=password)
+#         if user is not None:
+#             if user.is_active:
+#                 login(request, user)
+#                 return HttpResponseRedirect('index')
+#             else:
+#                 return HttpResponseRedirect("Account disabled")
+#         else:
+#             print("Invalid credentials: {0}, {1}".format(username, password))
+#             return HttpResponseRedirect("Invalid login credentials")
+#     else:
+#         return render(request, 'login.html', {})
+#
+#
+# @login_required(redirect_field_name='login')
+# def user_logout(request):
+#     logout(request)
+#     return HttpResponseRedirect('/Vote/home/')
+
+
 
 
 def vote(request):
