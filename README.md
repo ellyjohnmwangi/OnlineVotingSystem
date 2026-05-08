@@ -25,7 +25,7 @@ A Django-based online voting application for university elections. It allows adm
 1. Clone the repository and move into it:
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/ellyjohnmwangi/OnlineVotingSystem.git
    cd OnlineVotingSystem
    ```
 
